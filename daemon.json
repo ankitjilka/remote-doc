@@ -1,0 +1,11 @@
+{
+    "debug": true,
+    "iptables": false,
+    "max-concurrent-downloads": 4,
+    "storage-driver": "overlay2",
+    "log-driver": "json-file",
+    "log-opts": {
+      "max-size": "10m",
+      "max-file": "3"
+    }
+}
