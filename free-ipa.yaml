@@ -1,0 +1,13 @@
+- name: free ipa configure
+  hosts: all
+  vars_files: [vars-ipa.yml]
+  tasks:
+  - name: freeipa install
+    become: true
+    tags: [ipa]
+    command: apt install freeipa-client -y
+
+  - name: freeipa configure
+    become: true
+    tags: [ipac]
+    command: sudo ipa-client-install --hostname={{ ansible_hostname }}.pride.improwised.dev --mkhomedir --ntp-server=10.0.1.1 --ntp-server=ipa.improwised.com --ntp-server=time.cloudflare.com --domain=improwised.com -w {{ pwd }} --principal {{ uname }} -U
